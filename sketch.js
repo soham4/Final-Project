@@ -42,7 +42,7 @@ function preload(){
   anim=loadImage("images/animation.gif");
   witch=loadImage("images/witch4.png");
   castle=loadImage("images/spookycastle.png");
-  
+  hagrid=loadImage("images/hagrid.PNG");
 }
 function setup() {
   createCanvas(windowWidth, windowHeight);
@@ -54,10 +54,10 @@ function setup() {
   });
 
   video.hide();
-  for(i=0; i<60; i++){
+  for(i=0; i<100; i++){
     candles.push({
       x:random(20, windowWidth),
-      y: random(40, windowHeight/4),
+      y: random(100, windowHeight/2),
     })
   }
   for(i=0; i<5; i++){
@@ -73,9 +73,9 @@ function setup() {
     })
   }
   clicker3 = new Clickable();
-  clicker3.text = "Next";
-  clicker3.x = windowWidth/1.5;
-  clicker3.y = windowHeight/6;
+  clicker3.text = "Submit";
+  clicker3.x = windowWidth/2-50;
+  clicker3.y = windowHeight/2;
   clicker3.width = 100;
   clicker3.height = 50;
   clicker3.cornerRadius=40;
@@ -87,7 +87,7 @@ function setup() {
   clicker4 = new Clickable();
   clicker4.text = "Next";
   clicker4.x = windowWidth/1.5;
-  clicker4.y = windowHeight/6;
+  clicker4.y = windowHeight/1.25;
   clicker4.width = 100;
   clicker4.height = 50;
   clicker4.cornerRadius=40;
@@ -99,7 +99,7 @@ function setup() {
   clicker5 = new Clickable();
   clicker5.text = "Next";
   clicker5.x = windowWidth/1.5;
-  clicker5.y = windowHeight/2;
+  clicker5.y = windowHeight/1.25;
   clicker5.width = 100;
   clicker5.height = 50;
   clicker5.cornerRadius=40;
@@ -110,32 +110,32 @@ function setup() {
 }
   clicker6 = new Clickable();
   clicker6.text = "Next";
-  clicker6.x = windowWidth/1.5;
-  clicker6.y = windowHeight/6;
+  clicker6.x = windowWidth/2-50;
+  clicker6.y = windowHeight/1.125;
   clicker6.width = 100;
   clicker6.height = 50;
   clicker6.cornerRadius=40;
   clicker6.color= "#c9840c";
   clicker6.textColor="#ffffff";
   clicker6.onPress = function(){
-    state='quiz';
+    state='end';
 }
   clicker7 = new Clickable();
   clicker7.text = "Next";
   clicker7.x = windowWidth/1.5;
-  clicker7.y = windowHeight/6;
+  clicker7.y = windowHeight/1.25;
   clicker7.width = 100;
   clicker7.height = 50;
   clicker7.cornerRadius=40;
-  clicker7.color= "#c9840c";
-  clicker7.textColor="#ffffff";
+  clicker7.color= "#5f676b";
+  clicker7.textColor="#000000";
   clicker7.onPress = function(){
     state='dementer game';
 }
   clicker8 = new Clickable();
   clicker8.text = "Next";
-  clicker8.x = windowWidth/1.5;
-  clicker8.y = windowHeight/6;
+  clicker8.x = windowWidth/2-50;
+  clicker8.y = windowHeight/2;
   clicker8.width = 100;
   clicker8.height = 50;
   clicker8.cornerRadius=40;
@@ -144,8 +144,20 @@ function setup() {
   clicker8.onPress = function(){
     state='hatsort';
 }
+  clicker9 = new Clickable();
+  clicker9.text = "Next";
+  clicker9.x = windowWidth/1.5;
+  clicker9.y = windowHeight/2;
+  clicker9.width = 100;
+  clicker9.height = 50;
+  clicker9.cornerRadius=40;
+  clicker9.color= "#c9840c";
+  clicker9.textColor="#000000";
+  clicker9.onPress = function(){
+    state='dementer';
+}
   checkbox1 = createCheckbox('Intelligent', false);
-  checkbox1.position(windowWidth/4, windowHeight/6.5);
+  checkbox1.position(windowWidth/3.25, windowHeight/6);
   checkbox1.changed(myCheckedEvent1);
   checkbox2 = createCheckbox('Brave', false);
   checkbox2.position(checkbox1.x, checkbox1.y+30);
@@ -163,22 +175,22 @@ function setup() {
   checkbox6.position(checkbox1.x, checkbox1.y+150);
   checkbox6.changed(myCheckedEvent6);
   checkbox7 = createCheckbox('Patient', false);
-  checkbox7.position(checkbox1.x, checkbox1.y+180);
+  checkbox7.position(windowWidth*3/5, windowHeight/6);
   checkbox7.changed(myCheckedEvent7);
   checkbox8 = createCheckbox('Knowledgeable', false);
-  checkbox8.position(checkbox1.x, checkbox1.y+210);
+  checkbox8.position(checkbox7.x, checkbox1.y+30);
   checkbox8.changed(myCheckedEvent8);
   checkbox9 = createCheckbox('Planner', false);
-  checkbox9.position(checkbox1.x, checkbox1.y+240);
+  checkbox9.position(checkbox7.x, checkbox1.y+60);
   checkbox9.changed(myCheckedEvent9);
   checkbox10 = createCheckbox('Determination', false);
-  checkbox10.position(checkbox1.x, checkbox1.y+270);
+  checkbox10.position(checkbox7.x, checkbox1.y+90);
   checkbox10.changed(myCheckedEvent10);
   checkbox11 = createCheckbox('Fair Player', false);
-  checkbox11.position(checkbox1.x, checkbox1.y+300);
+  checkbox11.position(checkbox7.x, checkbox1.y+120);
   checkbox11.changed(myCheckedEvent11);
   checkbox12 = createCheckbox('Ambitious', false);
-  checkbox12.position(checkbox1.x, checkbox1.y+330);
+  checkbox12.position(checkbox7.x, checkbox1.y+150);
   checkbox12.changed(myCheckedEvent12);
   checkbox1.hide();
   checkbox2.hide();
@@ -221,7 +233,7 @@ function draw() {
     }
     }
     if(state==='wall' && o>10){
-      state='dementer';
+      state='warning';
     }
     let d =dist(x1, y1, x2, y2);
     if(d>65 && d<73){
@@ -252,7 +264,7 @@ function draw() {
   else if(state==='welcome'){
     drawWelcome();
     if(m>=5){
-    clicker6.draw();
+    state='quiz';
     }
   }
   else if (state==='letter') {
@@ -304,6 +316,10 @@ function draw() {
   else if(state==='wall'){
     drawWall();
   }
+  else if(state==='warning'){
+    warning();
+    clicker9.draw();
+  }
   else if(state==='dementer'){
     dementer();
     clicker7.draw();
@@ -313,12 +329,17 @@ function draw() {
   }
   else if(state==='patronum'){
     patronum();
+    clicker6.draw();
+  }
+  else if(state=='end'){
+    ending();
   }
 }
 
 function drawMenu(){
   imageMode(CENTER);
   image(bg2, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+  image(castle, windowWidth/2, windowHeight/1.25, windowWidth, windowHeight);
   textAlign(CENTER);
   textSize(30);
   textFont(hpfont);
@@ -343,7 +364,7 @@ function drawWelcome(){
   noStroke();
   ellipse(windowWidth/2, windowHeight/2, windowWidth/4);
   textAlign(CENTER);*/
-  textSize(25);
+  textSize(30);
   textFont(hpfont);
   fill(0);
   text("Welcome to the wizarding world!", windowWidth/2, windowHeight/3);
@@ -367,7 +388,7 @@ function drawWelcome(){
   }
   
    for (let w of witches) {
-     if(!w.paired){
+     if(!w.pressed){
       w.x += w.vx; 
       w.y += w.vy; 
      }
@@ -393,6 +414,7 @@ function drawWelcome(){
 function drawQuiz(){
   imageMode(CENTER);
   image(bg2, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+  image(castle, windowWidth/2, windowHeight/1.25, windowWidth, windowHeight);
   textAlign(CENTER);
   textSize(30);
   textFont(hpfont);
@@ -403,6 +425,8 @@ function drawQuiz(){
 function startHatSort(){
   //text("Hat sort", 200, 100);
   imageMode(CENTER);
+  image(bg2, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+  image(castle, windowWidth/2, windowHeight/1.25, windowWidth, windowHeight);
   videoimg= video.get();
   filter1();
   //image(videoimg, 320, 240, 640, 480);
@@ -420,7 +444,7 @@ function startHatSort(){
   clicker1 = new Clickable();
   clicker1.text = "Get your House!";
   clicker1.x = windowWidth/4;
-  clicker1.y = windowHeight/6;
+  clicker1.y = windowHeight/1.25;
   clicker1.width = 100;
   clicker1.height = 50;
   clicker1.cornerRadius=40;
@@ -459,13 +483,14 @@ function drawGame(){
   //text("play game", 200, 100);
   imageMode(CENTER);
   image(prof1, 150, windowHeight/1.25, 150, 150);
-  textAlign(CENTER);
-  let ypos=windowHeight/1.25;
-  text("Hi, I am Professor Remus", 240, ypos );
-  text("I will teach you a spell", 240, ypos+15 );
-  text("Now smile wide", 240, ypos+30 );
+  textAlign(LEFT);
+  textSize(30);
+  let ypos=windowHeight/1.3;
+  text("Hi, I am Professor Remus", 280, ypos );
+  text("I will teach you a spell", 280, ypos+30 );
+  text("Now smile wide", 280, ypos+60 );
   //image(gesture1, 240, 230, 50, 60);
-  text("To light the floating candles", 240, ypos+30);
+  text("To light the floating candles", 280, ypos+90);
   console.log(label);
   if(label==="smile") {
    for(c of candles){
@@ -479,12 +504,32 @@ function drawGame(){
 
  function drawWall(){
     image(wall, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+   imageMode(CENTER);
+  image(hagrid, 150, windowHeight/1.25, 150, 150);
    textAlign(CENTER);
    fill(0);
    textSize(30);
-   text("Open your mouth long", windowWidth/2, windowHeight/2);
-   text("To get through the wall", windowWidth/2, windowHeight/1.5);
+   textFont(hpfont);
+   text("Open your mouth long", 320, windowHeight/1.25);
+   text("To get through the wall", 320, windowHeight/1.125);
   }
+function warning(){
+  imageMode(CENTER);
+  image(bg2, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+  image(hagrid, 150, windowHeight/7, 150, 150);
+   textAlign(LEFT);
+   fill(0);
+   textSize(30);
+   textFont(hpfont);
+  let ycor=windowHeight/7;
+   text("Well Done!", 250, windowHeight/7);
+   text("But I need to warn you that all wizards aren't good", 250, ycor+30);
+   text("There is a dark lord", 250, ycor+60);
+  text("Also there are soulless creatures called Dementors", 250, ycor+90);
+   text("They gradually deprive human minds of happiness and intelligence", 250, ycor+120);
+text("They can be waived off by the spell Expecto Patrona", 250, ycor+150);
+  text("Remember you can activate this spell by simply raising your eyebrows!", 250, ycor+180);
+}
 function dementer(){
   background(250);
   imageMode(CENTER);
@@ -518,6 +563,20 @@ function patronum(){
   imageMode(CENTER);
   image(greybg, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
    spell(255, 4);
+}
+function ending(){
+  imageMode(CENTER);
+  image(bg2, windowWidth/2, windowHeight/2, windowWidth, windowHeight);
+   textAlign(CENTER);
+   fill(0);
+   textSize(30);
+   textFont(hpfont);
+  let ycor=windowHeight/7;
+   text("Congratulations!", windowWidth/2, windowHeight/7);
+   text("You have successfully waived off the dementors", windowWidth/2, ycor+50);
+   text("You might have to face many challenges ahead", windowWidth/2, ycor+100);
+  text("But you have proved you will be able to overcome them", windowWidth/2, ycor+150);
+   text("All the best for your future journey in the wizarding world!", windowWidth/2, ycor+200);
 }
 
 /*function keyPressed(){
@@ -738,7 +797,7 @@ function mousePressed(){
   for (let w of witches) {
       let wDistance = dist(w.x, w.y, mouseX, mouseY);
       if (wDistance <= 25) {
-        w.paired = true;
+        w.pressed = true;
         m+=1;
     }
   }
