@@ -823,6 +823,8 @@ text("They can be waived off by the spell Expecto Patronum", 50, ycor+150);
   fill(156, 18, 11);
   text("Remember you can activate this spell,", 50, ycor+190);
    text("by simply raising your eyebrows!", 50, ycor+220);
+  fill(0);
+  text("click next to fight with them!", 50, ycor+250);
 }
 function dementer(){
   background(250);
@@ -846,7 +848,7 @@ function dementer(){
   fill(255);
   textFont(hpfont);
   text("Dementors are out there", windowWidth/2, windowHeight/1.3);
-  text("Go out and fight with them", windowWidth/2, windowHeight/1.2);
+  text("Click next to go out and fight with them", windowWidth/2, windowHeight/1.2);
 }
 
 function dementergame() {
