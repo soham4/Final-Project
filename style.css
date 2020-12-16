@@ -5,3 +5,17 @@ html, body {
 canvas {
   display: block;
 }
+
+@font-face {font-family: "Harry Potter"; src: url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.eot"); src: url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.eot?#iefix") format("embedded-opentype"), url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.woff2") format("woff2"), url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.woff") format("woff"), url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.ttf") format("truetype"), url("//db.onlinewebfonts.com/t/0421d4186d6efbfc5331fe180895e780.svg#Harry Potter") format("svg"); }
+
+.mybox{
+  font-size: 20px;
+   color: #120100;
+  font-family: "Harry Potter";
+}
+
+.mybox2{
+  font-size: 14px;
+   color: #120100;
+  font-family: "Harry Potter";
+}
